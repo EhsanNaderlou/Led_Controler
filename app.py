@@ -3,9 +3,11 @@ import cv2
 import serial
 from cvzone import HandTrackingModule
 
+os.system("cls")
+arduino_port = input("enter the port of the arduino bord (for example com7): ")
 detector = HandTrackingModule.HandDetector(maxHands=1)
 camera = cv2.VideoCapture(0)
-arduino = serial.Serial("com7" , 9600)
+arduino = serial.Serial(arduino_port , 9600)
 
 while camera.isOpened():
     _ , frame = camera.read()
@@ -31,3 +33,4 @@ while camera.isOpened():
     else :
         print("the camera is not find ! ")
 arduino.close()
+os.system("cls")
